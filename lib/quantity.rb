@@ -5,7 +5,7 @@ class Quantity < Numeric
   include Quantity::Arithmetic
 
   INTEGER = 'I'
-  FLOAT = 'F'
+  FLOAT   = 'F'
 
   attr_reader :unit, :value
 
@@ -31,7 +31,23 @@ class Quantity < Numeric
     end
   end
 
+  # @return BigDecimal
+  def to_d
+    value.to_d
+  end
+
+  # @return Float
+  def to_f
+    value.to_f
+  end
+
+  # @return Integer
+  def to_i
+    value.to_i
+  end
+
+  # @return String
   def to_s
-    @value.to_s
+    value.to_s
   end
 end
