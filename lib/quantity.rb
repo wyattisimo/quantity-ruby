@@ -50,4 +50,9 @@ class Quantity < Numeric
   def to_s
     value.to_s
   end
+
+  # @return String
+  def inspect
+    "#<#{self.class.name} value:#{value} unit:#{unit}>"
+  end
 end
