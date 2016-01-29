@@ -33,27 +33,27 @@ class Quantity < Numeric
     end
   end
 
-  # @return BigDecimal
+  # @return [BigDecimal]
   def to_d
     value.to_d
   end
 
-  # @return Float
+  # @return [Float]
   def to_f
     value.to_f
   end
 
-  # @return Integer
+  # @return [Integer]
   def to_i
     value.to_i
   end
 
-  # @return String
+  # @return [String]
   def to_s
     value.to_s
   end
 
-  # @return String
+  # @return [String]
   def inspect
     "#<#{self.class.name} value:#{value} unit:#{unit}>"
   end
