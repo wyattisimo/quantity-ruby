@@ -1,3 +1,5 @@
+require "numeric"
+
 require "quantity/arithmetic"
 require "mongoid/quantity"
 
