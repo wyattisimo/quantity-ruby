@@ -10,23 +10,23 @@ class Quantity < Numeric
     end
 
     def +(other)
-      value + coerce_other(other)
+      self.class.new(value + coerce_other(other))
     end
 
     def -(other)
-      value - coerce_other(other)
+      self.class.new(value - coerce_other(other))
     end
 
     def *(other)
-      value * coerce_other(other)
+      self.class.new(value * coerce_other(other))
     end
 
     def /(other)
-      value / coerce_other(other)
+      self.class.new(value / coerce_other(other))
     end
 
     def **(other)
-      value ** coerce_other(other)
+      self.class.new(value ** coerce_other(other))
     end
 
     private def coerce_other(other)

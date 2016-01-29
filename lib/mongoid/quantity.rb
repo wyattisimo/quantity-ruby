@@ -3,7 +3,7 @@ class Quantity < Numeric
   # Converts an object of this instance into a database friendly value.
   def mongoize
     h = {
-      unit: unit,
+      unit:  unit,
       value: value,
     }
     h[:string] = value.to_s if unit == FLOAT
