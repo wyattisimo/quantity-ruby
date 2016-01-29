@@ -3,10 +3,10 @@ class Quantity < Numeric
   # Converts an object of this instance into a database friendly value.
   def mongoize
     h = {
-      unit:  unit,
       value: value,
+      unit:  unit,
     }
-    h[:string] = value.to_s if unit == FLOAT
+    h[:string] = @value.mongoize if @value.is_a?(BigDecimal)
     return h
   end
 
@@ -14,7 +14,7 @@ class Quantity < Numeric
 
     # Convert the object from its Mongo-friendly type to an instance of this class.
     def demongoize(object)
-      object[:value] = object.delete(:string).to_f if object.unit == FLOAT
+      object[:value] = object.delete(:string).to_d if object[:unit] == FLOAT
       self.new(object)
     end
 
@@ -24,7 +24,7 @@ class Quantity < Numeric
       when Quantity
         object.mongoize
       when Numeric
-        Quantity.new(object).mongoize
+        self.new(object).mongoize
       else
         object
       end
