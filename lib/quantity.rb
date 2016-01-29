@@ -13,11 +13,7 @@ class Quantity < Numeric
     case initial
 
     when Numeric
-      if initial == initial.to_s.to_i
-        @unit = INTEGER
-      elsif initial == initial.to_s.to_f
-        @unit = FLOAT
-      end
+      @unit = initial.is_a?(Integer) ? INTEGER : FLOAT
 
     when Hash
       @unit = initial[:unit] || initial['unit']
