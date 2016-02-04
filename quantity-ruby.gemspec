@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name     = 'quantity-ruby'
-  s.version  = '0.4'
+  s.version  = '0.5'
   s.platform = Gem::Platform::RUBY
   s.homepage = 'http://github.com/wyattisimo/quantity-ruby'
   s.summary  = 'Quantity stuff.'
