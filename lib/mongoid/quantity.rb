@@ -14,11 +14,12 @@ class Quantity < Numeric
 
     # Convert the object from its Mongo-friendly type to an instance of this class.
     def demongoize(object)
-      if object.is_a?(BSON::Document)
+      if object.is_a?(Hash)
         object[:value] = object.delete(:string).to_d if object[:unit] == FLOAT
         self.new(object)
       else
-        object
+        object = object.to_i == object.to_f ? object.to_i : object.to_f
+        self.new(object)
       end
     end
 
