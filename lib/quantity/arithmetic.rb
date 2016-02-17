@@ -30,9 +30,16 @@ class Quantity < Numeric
     end
 
     private def coerce_other(other)
-      other = other.is_a?(Quantity) ? other.value : other
-      raise TypeError.new("#{other.class} can't be coerced into a #{self.class}") unless other.is_a?(Numeric)
-      return other
+      value = case other
+      when Quantity
+        other.value
+      when Hash
+        other[:value] || other['value']
+      else
+        other
+      end
+      raise TypeError.new("#{value.class} can't be coerced into a #{self.class}") unless value.is_a?(Numeric)
+      return value
     end
 
   end
