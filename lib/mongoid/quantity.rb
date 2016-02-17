@@ -15,7 +15,7 @@ class Quantity < Numeric
     # Convert the object from its Mongo-friendly type to an instance of this class.
     def demongoize(object)
       if object.is_a?(Hash)
-        object[:value] = object.delete(:string).to_f if object[:unit] == FLOAT
+        object[:value] = object.delete(:string).to_f if object.has_key?(:string) && object[:unit] == FLOAT
         self.new(object)
       elsif object.nil? || object.empty?
         nil
