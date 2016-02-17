@@ -20,7 +20,6 @@ class Quantity < Numeric
       elsif object.nil? || object.empty?
         nil
       else
-        object = object.to_i == object.to_f ? object.to_i : object.to_f
         self.new(object)
       end
     end

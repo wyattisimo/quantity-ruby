@@ -10,7 +10,12 @@ class Quantity < Numeric
   FLOAT   = 'F'
 
   def initialize(initial)
-    initial = (initial[:value] || initial['value']) if initial.is_a?(Hash)
+    if initial.is_a?(Hash)
+      initial = initial[:value] || initial['value']
+    end
+    if initial.is_a?(String)
+      initial = initial.to_i == initial.to_f ? initial.to_i : initial.to_f
+    end
 
     raise TypeError.new('initial value must be Numeric') unless initial.is_a?(Numeric)
 
