@@ -30,7 +30,7 @@ class Quantity < Numeric
     end
 
     private def coerce_other(other)
-      Quantity.new(other)
+      Quantity.new(other).value
     end
 
   end
