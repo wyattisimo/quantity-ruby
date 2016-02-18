@@ -10,18 +10,20 @@ class Quantity < Numeric
   FLOAT   = 'F'
 
   def initialize(initial)
-    initial = case initial
+    value = case initial
     when Quantity
       initial.value
     when Hash
       initial[:value] || initial['value']
     when String
       initial.to_i == initial.to_f ? initial.to_i : initial.to_f
+    else
+      initial
     end
 
-    raise TypeError.new('initial value must be Numeric') unless initial.is_a?(Numeric)
+    raise TypeError.new('initial value must be Numeric') unless value.is_a?(Numeric)
 
-    @value = initial.is_a?(Integer) ? initial : BigDecimal(initial.to_s)
+    @value = value.is_a?(Integer) ? value : BigDecimal(value.to_s)
   end
 
   # The value.
